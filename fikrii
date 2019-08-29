@@ -1,0 +1,54 @@
+
+/*koneksi mysql via terminal*/
+cd xampp\mysql\bin;
+> mysql -u root -p;
+/*menampilkan database*/
+SHOW DATABASES;
+/*MEMBUAT DATABASE*/
+CREATE DATABASE `11rpl1_db`;
+/*CARA BUAT TABEL*/
+CREATE TABLE `siswa` (
+id_siswa INT (11) PRIMARY KEY AUTO_INCREMENT,
+nis CHAR (10),
+nama_lengkap (225),
+jk CHAR (1),
+tempat_lahir VARCHAR (255),
+tanggal_lahir DATE,
+ALAMAT TEXT,
+no_hp CHAR (15),
+tanggal_entri DATETIME
+);
+
+/*CARA MENAMPILKAN TABEL */
+SHOW TABLES;
+/*CARA SPESIFIKASI TABEL*/
+DESCRIBE `siswa`;
+/*CARA MENAMBAHKAN RECORD KE TABEL*/
+INSERT INTO `siswa` SET
+id_siswa = NULL,
+nis = '11800987',
+nama_lengkap = 'FIKRIYASA',
+jk = 'L',
+tempat_lahir = 'SUBANG',
+tanggal_lahir = '2002-08-03',
+alamat = 'PAGADEN BARAT',
+no_hp = '085317990859',
+tanggal_entri = NOW();
+
+/*CARA MENAMPILKAN SELURUH DATA TABEL*/
+SELECT * FROM `siswa`;
+
+/*CARA MENAMPILKAN BEBERAPA DATA DENGAN KONDISI TERTENTU*/
+SELECT * FROM `siswa` FROM jk='L';
+/*CARA MENAMPILKAN BEBERAPA/BATA RECORD PADA TABEL */
+SELECT * FROM `siswa` LIMIT 3, 5;
+/*CARA MENAMPILKAN / MENGURUTKAN RECORD  BERDASARKAN  FIRLD TERTENTU */
+SELECT * FROM `siswa` ORDER BY tanggal_lahir DESC;
+/*CARA MENAPILKAN FIELD MENGGUNAKAN FUNCTION*/
+SELECT UPPER(alamat) FROM`siswa`;
+/*CARA MENAMPILKAN BEBERAPA FIELD DENGAN KONDISI TERTENTU */
+SELECT nama_lengkap,tempat_lahir,tanggal_lahir FROM `siswa` WHERE YEAR(tanggal_lahir)='2002';
+/*CARA MEMPERBAHARUI DATA PADA TABEL*/
+UPDATE `siswa` SET tempat_lahir = 'BANDUNG', tanggal_lahir = '2002-08-03' WHERE  id_siswa = '1';
+/*CARA MENGAHPUS DATA/RECORD */
+DELETE FROM `siswa` WHERE id_siswa ='1';
